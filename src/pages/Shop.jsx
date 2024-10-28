@@ -1,10 +1,13 @@
-// import Slider from "../ui/Slider";
+import Filter from "../features/shop/Filter";
+import ItemList from "../features/shop/ItemList";
 
 export default function Shop() {
     return (
-        <div className="relative flex w-[95dvw] flex-col gap-10 sm:w-[80dvw]">
-            {/* <Slider /> */}
-            <h1>Shop</h1>
-        </div>
+        <>
+            <div className="grid grid-cols-[1fr_12rem] gap-5">
+                <ItemList />
+                <Filter />
+            </div>
+        </>
     );
 }
