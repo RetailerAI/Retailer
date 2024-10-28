@@ -1,12 +1,12 @@
-import Filter from "../features/shop/Filter";
+import FilterBar from "../features/shop/FilterBar";
 import ItemList from "../features/shop/ItemList";
 
 export default function Shop() {
     return (
         <>
-            <div className="grid grid-cols-[1fr_12rem] gap-5">
+            <div className="flex flex-col gap-3">
+                <FilterBar />
                 <ItemList />
-                <Filter />
             </div>
         </>
     );
