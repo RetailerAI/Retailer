@@ -13,7 +13,7 @@ export default function AppLayout() {
             />
             <Sidebar isHidden={isHidden} setIsHidden={setIsHidden} />
             <div
-                className={`${isHidden ? "" : "blur-lg"} mt-14 h-full flex-1 p-5 text-lg sm:mt-0 sm:blur-none`}
+                className={`${isHidden ? "" : "pointer-events-none blur-lg"} mt-14 h-full flex-1 p-5 text-lg sm:mt-0 sm:blur-none`}
             >
                 <Outlet />
             </div>

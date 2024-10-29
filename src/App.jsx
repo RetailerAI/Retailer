@@ -4,6 +4,7 @@ import Shop from "./pages/Shop";
 import Admin from "./pages/Admin";
 import Cart from "./pages/Cart";
 import Home from "./pages/Home";
+import PageNotFound from "./pages/PageNotFound";
 
 export default function App() {
     return (
@@ -15,6 +16,7 @@ export default function App() {
                     <Route path="admin" element={<Admin />} />
                     <Route path="cart" element={<Cart />} />
                 </Route>
+                <Route path="*" element={<PageNotFound />} />
             </Routes>
         </BrowserRouter>
     );
