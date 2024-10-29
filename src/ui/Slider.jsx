@@ -84,7 +84,7 @@ function ReactSlider() {
             <button
                 onClick={prevSlide}
                 disabled={currentIndex === 0}
-                className="rounded-full border border-stone-500 bg-slate-300 px-1 text-3xl hover:bg-slate-400"
+                className="rounded-full border border-black bg-slate-300 px-1 text-3xl hover:bg-slate-400"
             >
                 &#11164;
             </button>
@@ -93,7 +93,7 @@ function ReactSlider() {
                 .map((item, id) => (
                     <div
                         key={id}
-                        className="flex w-96 flex-col items-center justify-center rounded-md bg-stone-300 p-3"
+                        className="bg-base-300 flex w-96 flex-col items-center justify-center rounded-md p-3"
                     >
                         <img
                             className="h-36 w-full rounded-md"
@@ -106,7 +106,7 @@ function ReactSlider() {
             <button
                 onClick={nextSlide}
                 disabled={currentIndex === data.length - visibleCards}
-                className="rounded-full border border-stone-500 bg-slate-300 px-1 text-3xl hover:bg-slate-400"
+                className="rounded-full border border-black bg-slate-300 px-1 text-3xl hover:bg-slate-400"
             >
                 &#11166;
             </button>

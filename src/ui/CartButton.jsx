@@ -5,7 +5,7 @@ export default function CartButton() {
     return (
         <Link
             to="/cart"
-            className="hidden self-center rounded-full p-2 transition-colors hover:bg-stone-300 sm:inline"
+            className="hover:bg-base-300 hidden self-center rounded-full text-3xl transition-colors sm:inline"
         >
             <BiCart />
         </Link>

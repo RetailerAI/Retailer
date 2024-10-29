@@ -1,17 +1,16 @@
-export default function Button({ isHidden, setIsHidden }) {
+export default function SidebarButton({ isHidden, setIsHidden }) {
     return (
-        <label className="relative sm:hidden">
+        <label className="btn btn-circle btn-sm swap swap-rotate sm:hidden">
             {/* this hidden checkbox controls the state */}
             <input
                 type="checkbox"
-                value={isHidden}
+                checked={!isHidden}
                 onChange={() => setIsHidden(!isHidden)}
-                className="absolute left-2 top-2 hidden"
             />
 
             {/* hamburger icon */}
             <svg
-                className={`${isHidden ? "" : "invisible"} absolute left-0 top-0 cursor-pointer transition-opacity`}
+                className="swap-off fill-current"
                 xmlns="http://www.w3.org/2000/svg"
                 width="32"
                 height="32"
@@ -22,7 +21,7 @@ export default function Button({ isHidden, setIsHidden }) {
 
             {/* close icon */}
             <svg
-                className={`${!isHidden ? "" : "invisible"} absolute left-0 top-0 cursor-pointer transition-opacity`}
+                className="swap-on fill-current"
                 xmlns="http://www.w3.org/2000/svg"
                 width="32"
                 height="32"
