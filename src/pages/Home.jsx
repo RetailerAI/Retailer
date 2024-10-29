@@ -1,3 +1,10 @@
+import Daysi from "../ui/Daysi";
 export default function Home() {
-    return <>Home</>;
+   return (
+    <div>
+        <Daysi/>
+    </div>
+   )
 }
+
+
