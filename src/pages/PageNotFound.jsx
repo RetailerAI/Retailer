@@ -1,12 +1,11 @@
-import { Link } from "react-router-dom";
+import LinkButton from "../ui/LinkButton";
 
 export default function PageNotFound() {
     return (
-        <Link
-            to="/"
-            className="flex h-screen w-full items-center justify-center capitalize"
-        >
-            Page Not Found Click to return to home
-        </Link>
+        <div className="flex h-screen w-full flex-col items-center justify-center capitalize">
+            <h1>URL Error ❌</h1>
+            <h1>path does not exist</h1>
+            <LinkButton to="-1">&larr; Go back</LinkButton>
+        </div>
     );
 }
