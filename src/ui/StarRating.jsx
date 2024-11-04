@@ -10,19 +10,19 @@ StarRating.propTypes = {
     color: PropTypes.string,
     size: PropTypes.number,
     className: PropTypes.string,
-    message: PropTypes.array,
     defaultRating: PropTypes.number,
     onSetRating: PropTypes.func,
+    disable: PropTypes.bool,
 };
 
 function StarRating({
     maxRating = 5,
     color = "#fcd419",
-    size = 48,
+    size = 20,
     className = "",
-    message = [],
-    defaultRating = 0,
+    defaultRating = 3,
     onSetRating,
+    disable = false,
 }) {
     const [rating, setRating] = useState(defaultRating);
     const [tempRating, setTempRating] = useState(0);
@@ -50,18 +50,16 @@ function StarRating({
                         full={
                             tempRating ? tempRating >= i + 1 : rating >= i + 1
                         }
-                        onMouseEnter={() => setTempRating(i + 1)}
-                        onMouseLeave={() => setTempRating(0)}
+                        onMouseEnter={() =>
+                            disable ? null : setTempRating(i + 1)
+                        }
+                        onMouseLeave={() => (disable ? null : setTempRating(0))}
                         color={color}
                         size={size}
                     />
                 ))}
             </div>
-            <p style={textStyle}>
-                {message.length === maxRating
-                    ? message[tempRating ? tempRating - 1 : rating - 1]
-                    : tempRating || rating || ""}
-            </p>
+            <p style={textStyle}>{tempRating || (rating ?? "")}</p>
         </div>
     );
 }

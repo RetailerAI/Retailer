@@ -6,7 +6,7 @@ function Error() {
     console.log(error);
 
     return (
-        <div className="flex h-screen w-full items-center justify-center capitalize">
+        <div className="flex h-screen w-full flex-col items-center justify-center capitalize">
             <h1>Something went wrong 😢</h1>
             <p>{error.data || error.message}</p>
 
