@@ -10,8 +10,6 @@ const Cart = lazy(() => import("./pages/Cart"));
 const Home = lazy(() => import("./pages/Home"));
 const ItemDetails = lazy(() => import("./features/Item/ItemDetails"));
 
-// const Parent = lazy(() => import("./parent-route"));
-
 const router = createBrowserRouter([
     {
         element: <AppLayout />,
@@ -49,7 +47,10 @@ const router = createBrowserRouter([
 export default function App() {
     return (
         <>
-            <RouterProvider router={router} />
+            <RouterProvider
+                router={router}
+                fallbackElement={<p>loading...</p>}
+            />
         </>
     );
 }
