@@ -1,13 +1,11 @@
-import { useParams } from "react-router-dom";
-import data from "../../data/data";
+const data = {
+    id: 12,
+    name: "laptop",
+    rating: 4.4,
+    imageURL: "react.svg",
+};
 
 export default function ItemDetails() {
-    const { itemId } = useParams();
-    const { imageURL } = data[itemId];
-
-    return (
-        <div>
-            <img src={imageURL} alt="123" />
-        </div>
-    );
+    const item = data;
+    return <div></div>;
 }

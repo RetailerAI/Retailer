@@ -1,47 +1,62 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import AppLayout from "./ui/AppLayout";
-import Shop from "./pages/Shop";
-import Admin from "./pages/Admin";
-import Cart from "./pages/Cart";
 import Home from "./pages/Home";
-import PageNotFound from "./pages/PageNotFound";
-import ItemDetails from "./features/Item/ItemDetails";
 import Error from "./pages/Error";
 
 const router = createBrowserRouter([
     {
         element: <AppLayout />,
         errorElement: <Error />,
+        path: "/",
         children: [
             {
-                path: "/",
+                index: true,
                 element: <Home />,
             },
             {
                 path: "/shop",
-                element: <Shop />,
-                errorElement: <Error />,
+                lazy: async () => {
+                    let Shop = await import("./pages/Shop");
+                    return { Component: Shop.default };
+                },
             },
             {
                 path: "/shop/:itemId",
-                element: <ItemDetails />,
+                lazy: async () => {
+                    let Item = await import("./features/Item/ItemDetails");
+                    return { Component: Item.default };
+                },
             },
             {
                 path: "/cart",
-                element: <Cart />,
+                lazy: async () => {
+                    let Cart = await import("./pages/Cart");
+                    return { Component: Cart.default };
+                },
             },
             {
                 path: "/admin",
-                element: <Admin />,
+                lazy: async () => {
+                    let Admin = await import("./pages/Admin");
+                    return { Component: Admin.default };
+                },
             },
         ],
     },
     {
         path: "*",
-        element: <PageNotFound />,
+        lazy: async () => {
+            let PageNotFound = await import("./pages/PageNotFound");
+            return { Component: PageNotFound.default };
+        },
     },
 ]);
 
 export default function App() {
-    return <RouterProvider router={router} />;
+    return (
+        <RouterProvider
+            router={router}
+            fallbackElement={<p style={{ fontSize: "10rem" }}>Loading...</p>}
+        />
+    );
 }

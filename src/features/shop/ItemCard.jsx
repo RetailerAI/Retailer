@@ -4,7 +4,7 @@ import StarRating from "../../ui/StarRating";
 export default function ItemRow({ item }) {
     return (
         <Link
-            to={`/shop/${item.id}`}
+            to={`/shop/${item.slug}`}
             className="flex w-full gap-4 rounded-lg border border-black p-2 transition-colors hover:bg-base-200 sm:h-[22rem] sm:flex-col sm:gap-3"
         >
             <img
