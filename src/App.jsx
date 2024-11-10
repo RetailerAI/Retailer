@@ -1,12 +1,16 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import AppLayout from "./ui/AppLayout";
-import Shop from "./pages/Shop";
-import Admin from "./pages/Admin";
-import Cart from "./pages/Cart";
-import Home from "./pages/Home";
-import PageNotFound from "./pages/PageNotFound";
-import ItemDetails from "./features/Item/ItemDetails";
 import Error from "./pages/Error";
+import PageNotFound from "./pages/PageNotFound";
+import { lazy } from "react";
+
+const Shop = lazy(() => import("./pages/Shop"));
+const Admin = lazy(() => import("./pages/Admin"));
+const Cart = lazy(() => import("./pages/Cart"));
+const Home = lazy(() => import("./pages/Home"));
+const ItemDetails = lazy(() => import("./features/Item/ItemDetails"));
+
+// const Parent = lazy(() => import("./parent-route"));
 
 const router = createBrowserRouter([
     {
@@ -43,5 +47,9 @@ const router = createBrowserRouter([
 ]);
 
 export default function App() {
-    return <RouterProvider router={router} />;
+    return (
+        <>
+            <RouterProvider router={router} />
+        </>
+    );
 }
