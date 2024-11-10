@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import { Outlet } from "react-router-dom";
 import Navbar from "./Navbar";
 import Sidebar from "./Sidebar";
@@ -13,9 +13,11 @@ export default function AppLayout() {
             />
             <Sidebar isHidden={isHidden} setIsHidden={setIsHidden} />
             <div
-                className={`${isHidden ? "" : "pointer-events-none blur-lg"} mt-14 flex h-full flex-1 flex-col overflow-y-scroll p-5 text-lg sm:mt-0 sm:blur-none`}
+                className={`${isHidden ? "" : "pointer-events-none blur-lg"} mt-14 flex h-full flex-1 flex-col overflow-y-auto p-5 text-lg sm:mt-0 sm:blur-none`}
             >
-                <Outlet />
+                <Suspense fallback={<p>loading ...</p>}>
+                    <Outlet />
+                </Suspense>
             </div>
         </div>
     );

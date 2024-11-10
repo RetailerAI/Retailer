@@ -1,7 +1,14 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import AppLayout from "./ui/AppLayout";
-import Home from "./pages/Home";
 import Error from "./pages/Error";
+import PageNotFound from "./pages/PageNotFound";
+import { lazy } from "react";
+import Home from "./pages/Home";
+
+const Shop = lazy(() => import("./pages/Shop"));
+const Admin = lazy(() => import("./pages/Admin"));
+const Cart = lazy(() => import("./pages/Cart"));
+const ItemDetails = lazy(() => import("./features/Item/ItemDetails"));
 
 const router = createBrowserRouter([
     {
@@ -15,48 +22,32 @@ const router = createBrowserRouter([
             },
             {
                 path: "/shop",
-                lazy: async () => {
-                    let Shop = await import("./pages/Shop");
-                    return { Component: Shop.default };
-                },
+                element: <Shop />,
             },
             {
                 path: "/shop/:itemId",
-                lazy: async () => {
-                    let Item = await import("./features/Item/ItemDetails");
-                    return { Component: Item.default };
-                },
+                element: <ItemDetails />,
             },
             {
                 path: "/cart",
-                lazy: async () => {
-                    let Cart = await import("./pages/Cart");
-                    return { Component: Cart.default };
-                },
+                element: <Cart />,
             },
             {
                 path: "/admin",
-                lazy: async () => {
-                    let Admin = await import("./pages/Admin");
-                    return { Component: Admin.default };
-                },
+                element: <Admin />,
             },
         ],
     },
     {
         path: "*",
-        lazy: async () => {
-            let PageNotFound = await import("./pages/PageNotFound");
-            return { Component: PageNotFound.default };
-        },
+        element: <PageNotFound />,
     },
 ]);
 
 export default function App() {
     return (
-        <RouterProvider
-            router={router}
-            fallbackElement={<p style={{ fontSize: "10rem" }}>Loading...</p>}
-        />
+        <>
+            <RouterProvider router={router} />
+        </>
     );
 }
